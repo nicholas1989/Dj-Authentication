@@ -7,8 +7,8 @@ def home(request):
     return render(request, "index.html")
 
 
-def SignupView(CreateView):
+class SignupView(CreateView):
     form_class = CustomUserCreationForm
-    success_url = '/login'
-    template_name = 'signup.html'
+    success_url = '/accounts/login'
+    template_name = 'registration/signup.html'
     
