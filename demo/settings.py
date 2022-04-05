@@ -21,12 +21,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     
     #third party
+    'rest_framework',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
     'django.contrib.sites',
-
     'allauth',
     'allauth.account',
+    'dj_rest_auth.registration',
+    
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    
     'crispy_forms',
     
     #project apps
@@ -94,6 +99,12 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
 
 if DEBUG is False:
     #This should be used in a production setting

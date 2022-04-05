@@ -17,6 +17,8 @@ boto3 = "*"
 django-storages = "*"
 django-allauth = "*"
 django-crispy-forms = "*"
+djangorestframework = "*"
+dj-rest-auth = "*"
 
 [requires]
 python_version = "3.7"
