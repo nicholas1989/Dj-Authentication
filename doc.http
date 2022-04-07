@@ -48,6 +48,30 @@ Content-Type: application/json
 Authorization: Token {{restAuthToken.response.body.key}}
 
 
+### Creating a JWT
+# @name jwt
+POST {{base_url}}/api/token/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "nwokoronkem@gmail.com",
+    "password": "squash"
+}
+
+
+### Refreshing a jwt
+POST {{base_url}}/api/token/refresh/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "refresh": "{{jwt.response.body.refresh}}"
+}
+
+
+### Testing jwt Authentication
+GET {{base_url}}/json/ HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{jwt.response.body.access}}
 
 
 

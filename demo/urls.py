@@ -4,6 +4,10 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken import views
 from core.views import home, SignupView, HomeView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 
 urlpatterns = [
@@ -11,6 +15,8 @@ urlpatterns = [
     
     #( 3rd party auth) - Django allauth
     path('api-auth/', include('rest_framework.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api-token-auth/', views.obtain_auth_token),
     path('json/', HomeView.as_view(), name='home-json'),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
@@ -23,7 +29,7 @@ urlpatterns = [
     #Built in auth
     #path('accounts/', include('django.contrib.auth.urls')),
     
-    path('', home, name='home'),
+    path('home/', home, name='home'),
     
 ]
 

@@ -92,6 +92,13 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
@@ -99,12 +106,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ]
-}
 
 if DEBUG is False:
     #This should be used in a production setting
